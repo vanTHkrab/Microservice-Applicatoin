@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "product-service-rust/product-pb";
+
+service ProductService {
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse);
+  rpc GetAllProducts (GetAllProductsRequest) returns (GetAllProductsResponse);
+}
+
+message Product {
+  int32 id = 1;
+  string name = 2;
+  double price = 3;
+}
+
+message GetProductRequest {
+  int32 id = 1;
+}
+
+message GetAllProductsRequest {}
+
+message GetProductResponse {
+  int32 id = 1;
+  string name = 2;
+  double price = 3;
+}
+
+message GetAllProductsResponse {
+  repeated Product products = 1;
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "order-service-go/order-pb";
+
+service OrderService {
+  rpc GetOrder (GetOrderRequest) returns (GetOrderResponse);
+  rpc GetAllOrders (GetAllOrdersRequest) returns (GetAllOrdersResponse);
+}
+
+message Order {
+  int32 id = 1;
+  string status = 2;
+  double total = 3;
+}
+
+message GetOrderRequest {
+  int32 id = 1;
+}
+
+message GetAllOrdersRequest {
+}
+
+message GetOrderResponse {
+  int32 id = 1;
+  string status = 2;
+  double total = 3;
+}
+
+message GetAllOrdersResponse {
+  repeated Order orders = 1;
+}
